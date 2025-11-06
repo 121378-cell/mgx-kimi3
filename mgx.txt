@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimi AI X - Construye tus ideas con inteligencia artificial</title>
+    <meta name="description" content="Plataforma de inteligencia artificial líder para construir, crear e innovar. Gestión completa por Kimi AI sin restricciones.">
+    
+    <!-- Estilos incluidos -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8fafc;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 50;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #feca57);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+        
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .robot-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-hero {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .btn-hero:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-hero-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #718096;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 20px 20px 60px #d1d5db, -20px -20px 60px #ffffff;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 20px 20px 60px #c7d2fe, -20px -20px 60px #ffffff;
+        }
+        
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            space-y: 0.5rem;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #38a169;
+        }
+        
+        /* Tools Section */
+        .tools {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .tool-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-description {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Demo Section */
+        .demo {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .demo-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .demo-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .demo-input:focus {
+            outline: none;
+            border-bottom-color: white;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 0;
+            background: #f7fafc;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            color: #38a169;
+            font-weight: bold;
+        }
+        
+        .pricing-card.featured .pricing-features li::before {
+            color: #feca57;
+        }
+        
+        .pricing-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .pricing-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:not(.featured) .pricing-button {
+            background: white;
+            color: #667eea;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .pricing-card.featured .pricing-button {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Community Section */
+        .community {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .community-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .community-feature {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .community-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .community-stats {
+            background: linear-gradient(135deg, #f0f4ff, #ffe0f0);
+            padding: 2rem;
+            border-radius: 1.5rem;
+        }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 4rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            border-radius: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn-cta {
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .btn-cta-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-cta:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #2d3748;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: #a0aec0;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .section-title { font-size: 2rem; }
+            .community-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <span>Kimi AI X</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Características</a>
+                    <a href="#tools">Herramientas</a>
+                    <a href="#pricing">Precios</a>
+                    <a href="#community">Comunidad</a>
+                    <a href="#" class="btn-primary">Comenzar Gratis</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="robot-icon">🤖</div>
+            <h1>Construye tus ideas con inteligencia artificial</h1>
+            <p>Kimi AI X es la plataforma definitiva donde la inteligencia artificial se encuentra con la creatividad. Sin límites, sin restricciones, solo pura innovación.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-hero">Comenzar Ahora - 100% Gratis</a>
+                <a href="#" class="btn-hero btn-hero-outline">Ver Demo</a>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Sin Límites</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100M+</span>
+                    <span class="stat-label">Proyectos Creados</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Comunidad Activa</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">IA Disponible</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Potencia ilimitada con Kimi AI</h2>
+            <p class="section-subtitle">Explora un ecosistema completo de herramientas de IA diseñadas para llevar tus ideas al siguiente nivel</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon gradient-bg">💻</div>
+                    <h3 class="feature-title">Desarrollo de Software</h3>
+                    <p class="feature-description">Genera código completo en múltiples lenguajes. Desde aplicaciones web hasta algoritmos complejos de machine learning.</p>
+                    <ul class="feature-list">
+                        <li>✅ Full-stack development</li>
+                        <li>✅ Debugging inteligente</li>
+                        <li>✅ Optimización automática</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">🎨</div>
+                    <h3 class="feature-title">Diseño y Creatividad</h3>
+                    <p class="feature-description">Crea diseños impresionantes, logos, ilustraciones y contenido visual profesional con comandos simples.</p>
+                    <ul class="feature-list">
+                        <li>✅ Diseño UI/UX</li>
+                        <li>✅ Generación de imágenes</li>
+                        <li>✅ Branding automatizado</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #feca57, #ff9ff3);">📊</div>
+                    <h3 class="feature-title">Análisis de Datos</h3>
+                    <p class="feature-description">Procesa y analiza grandes volúmenes de datos. Genera insights accionables y visualizaciones interactivas.</p>
+                    <ul class="feature-list">
+                        <li>✅ Machine Learning</li>
+                        <li>✅ Predicciones avanzadas</li>
+                        <li>✅ Dashboards en tiempo real</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #48bb78, #38a169);">📝</div>
+                    <h3 class="feature-title">Redacción Inteligente</h3>
+                    <p class="feature-description">Crea contenido de alta calidad: artículos, blogs, emails, guiones y mucho más con tono y estilo personalizado.</p>
+                    <ul class="feature-list">
+                        <li>✅ SEO Optimizado</li>
+                        <li>✅ Multiidioma</li>
+                        <li>✅ Plagio 0%</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #9f7aea, #b794f6);">🎬</div>
+                    <h3 class="feature-title">Multimedia Avanzada</h3>
+                    <p class="feature-description">Genera videos, animaciones, música y efectos especiales. Crea contenido multimedia profesional sin esfuerzo.</p>
+                    <ul class="feature-list">
+                        <li>✅ Edición de video</li>
+                        <li>✅ Síntesis de voz</li>
+                        <li>✅ Animación 3D</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fc8181, #f56565);">⚙️</div>
+                    <h3 class="feature-title">Automatización Total</h3>
+                    <p class="feature-description">Automatiza flujos de trabajo completos. Conecta herramientas, sincroniza datos y optimiza procesos empresariales.</p>
+                    <ul class="feature-list">
+                        <li>✅ Integraciones API</li>
+                        <li>✅ Workflows personalizados</li>
+                        <li>✅ Ejecución programada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <h2 class="section-title">Herramientas que revolucionan tu trabajo</h2>
+            <p class="section-subtitle">Accede instantáneamente a todas las capacidades de Kimi AI desde cualquier dispositivo</p>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">💻</div>
+                    <h3 class="tool-title">Code Generator</h3>
+                    <p class="tool-description">Genera código completo en segundos</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🖼️</div>
+                    <h3 class="tool-title">Image Creator</h3>
+                    <p class="tool-description">Crea imágenes desde cero</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3 class="tool-title">Data Analyzer</h3>
+                    <p class="tool-description">Analiza datos complejos</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <h3 class="tool-title">AI Assistant</h3>
+                    <p class="tool-description">Tu compañero inteligente 24/7</p>
+                </div>
+            </div>
+            <div class="demo">
+                <h3>Prueba el poder de Kimi AI ahora</h3>
+                <div style="display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;">
+                    <div style="width: 2.5rem; height: 2.5rem; background: #feca57; border-radius: 50%; display: flex; align-items: center; justify-content: center;">🤖</div>
+                    <span style="font-weight: 600;">Kimi AI está escuchando...</span>
+                </div>
+                <input type="text" class="demo-input" placeholder="Escribe lo que quieras crear...">
+                <br><br>
+                <a href="#" class="btn-cta">Generar con IA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Precios sin competencia</h2>
+            <p class="section-subtitle">Comienza gratis, actualiza cuando quieras. Sin límites, sin restricciones ocultas.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Gratis</h3>
+                    <div class="pricing-price">$0</div>
+                    <p>Para siempre</p>
+                    <ul class="pricing-features">
+                        <li>✅ 100 solicitudes/mes</li>
+                        <li>✅ Todas las herramientas básicas</li>
+                        <li>✅ Comunidad activa</li>
+                        <li>✅ Actualizaciones regulares</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Comenzar Gratis</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3 class="pricing-title">Pro</h3>
+                    <div class="pricing-price">$19</div>
+                    <p>por mes</p>
+                    <ul class="pricing-features">
+                        <li>✅ Solicitudes ilimitadas</li>
+                        <li>✅ Acceso a todas las herramientas</li>
+                        <li>✅ Prioridad en cola</li>
+                        <li>✅ Exportación sin marca de agua</li>
+                        <li>✅ Soporte 24/7</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Comenzar Prueba Gratis</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Enterprise</h3>
+                    <div class="pricing-price">Custom</div>
+                    <p>Precio flexible</p>
+                    <ul class="pricing-features">
+                        <li>✅ Todo lo de Pro</li>
+                        <li>✅ API dedicada</li>
+                        <li>✅ Instancia privada</li>
+                        <li>✅ Personalización completa</li>
+                        <li>✅ Gerente de cuenta dedicado</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Contactar Ventas</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #718096;">
+                ✨ Todos los planes incluyen actualizaciones automáticas y nuevas funciones<br>
+                Cancela en cualquier momento • Sin tarifas ocultas • Garantía de devolución de 30 días
+            </p>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <h2 class="section-title">Únete a la revolución</h2>
+            <p class="section-subtitle">Más de 50,000 creadores ya están construyendo el futuro con Kimi AI X</p>
+            <div class="community-grid">
+                <div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Comunidad global de innovadores</h3>
+                    <div class="community-feature">
+                        <div class="community-icon" style="background: #c6f6d5;"><span style="color: #38a169;">👥</span></div>
+                        <div>
+                            <h4 style="font-weight: bold; margin-bottom: 0.5rem;">Foros activos 24/7</h4>
+                            <p style="color: #718096;">Comparte ideas, resuelve dudas y colabora con creadores de todo el mundo</p>
+                        </div>
+                    </div>
+                    <div class="community-feature">
+                        <div class="community-icon" style="background: #bee3f8;"><span style="color: #3182ce;">🏆</span></div>
+                        <div>
+                            <h4 style="font-weight: bold; margin-bottom: 0.5rem;">Hackathons mensuales</h4>
+                            <p style="color: #718096;">Compite por premios de hasta $10,000 y reconocimiento global</p>
+                        </div>
+                    </div>
+                    <div class="community-feature">
+                        <div class="community-icon" style="background: #e9d8fd;"><span style="color: #805ad5;">🎓</span></div>
+                        <div>
+                            <h4 style="font-weight: bold; margin-bottom: 0.5rem;">Programa de embajadores</h4>
+                            <p style="color: #718096;">Conviértete en líder de la comunidad y accede a beneficios exclusivos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="community-stats">
+                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">Estadísticas de la comunidad</h4>
+                    <div class="stat-row">
+                        <span>Proyectos compartidos</span>
+                        <span class="stat-value" style="color: #667eea;">2.3M+</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Respuestas en foros</span>
+                        <span class="stat-value" style="color: #d53f8c;">850K+</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Miembros activos</span>
+                        <span class="stat-value" style="color: #dd6b20;">50K+</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Países representados</span>
+                        <span class="stat-value" style="color: #38a169;">150+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="container">
+        <div class="cta">
+            <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">¿Listo para cambiar el mundo?</h3>
+            <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem;">Únete a miles de creadores que ya están construyendo el futuro</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-cta btn-cta-primary">Comenzar Ahora - Es Gratis</a>
+                <a href="#" class="btn-cta btn-cta-secondary">Unirse a Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">
+                        <div class="logo-icon">🤖</div>
+                        <span>Kimi AI X</span>
+                    </div>
+                    <p style="color: #a0aec0; margin-bottom: 1.5rem;">Construyendo el futuro de la inteligencia artificial, un proyecto a la vez.</p>
+                    <div class="social-links">
+                        <a href="#">🐦</a>
+                        <a href="#">💼</a>
+                        <a href="#">💬</a>
+                        <a href="#">🐙</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Producto</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Características</a></li>
+                        <li><a href="#">Precios</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Actualizaciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentación</a></li>
+                        <li><a href="#">Guías</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Centro de ayuda</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Acerca de</a></li>
+                        <li><a href="#">Carreras</a></li>
+                        <li><a href="#">Prensa</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: #a0aec0;">© 2024 Kimi AI X. Todos los derechos reservados.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#" style="color: #a0aec0; text-decoration: none;">Privacidad</a>
+                    <a href="#" style="color: #a0aec0; text-decoration: none;">Términos</a>
+                    <a href="#" style="color: #a0aec0; text-decoration: none;">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Typing effect
+        const texts = ['Construye tus ideas', 'Crea sin límites', 'Innovación ilimitada', 'Potencia tu creatividad'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.querySelector('.typing-effect');
+        
+        function typeText() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeText, typeSpeed);
+        }
+        
+        // Start typing effect
+        typeText();
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
