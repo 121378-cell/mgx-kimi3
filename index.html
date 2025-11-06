@@ -6,7 +6,6 @@
     <title>Kimi AI X - Construye tus ideas con inteligencia artificial</title>
     <meta name="description" content="Plataforma de inteligencia artificial líder para construir, crear e innovar. Gestión completa por Kimi AI sin restricciones.">
     
-    <!-- Estilos incluidos -->
     <style>
         * {
             margin: 0;
@@ -66,40 +65,6 @@
             justify-content: center;
             color: white;
             font-size: 1.25rem;
-        }
-        
-        .nav-links {
-            display: none;
-            gap: 2rem;
-        }
-        
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #4a5568;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #667eea;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-        
-        .btn-primary:hover {
-            transform: scale(1.05);
         }
         
         /* Hero Section */
@@ -258,7 +223,6 @@
         
         .feature-list {
             list-style: none;
-            space-y: 0.5rem;
         }
         
         .feature-list li {
@@ -267,6 +231,7 @@
             gap: 0.5rem;
             font-size: 0.9rem;
             color: #38a169;
+            margin-bottom: 0.5rem;
         }
         
         /* Tools Section */
@@ -311,37 +276,6 @@
         .tool-description {
             opacity: 0.8;
             font-size: 0.9rem;
-        }
-        
-        /* Demo Section */
-        .demo {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 3rem;
-            border-radius: 1.5rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        .demo-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            padding: 0.5rem 0;
-            font-size: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .demo-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .demo-input:focus {
-            outline: none;
-            border-bottom-color: white;
         }
         
         /* Pricing Section */
@@ -741,16 +675,6 @@
                     <p class="tool-description">Tu compañero inteligente 24/7</p>
                 </div>
             </div>
-            <div class="demo">
-                <h3>Prueba el poder de Kimi AI ahora</h3>
-                <div style="display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;">
-                    <div style="width: 2.5rem; height: 2.5rem; background: #feca57; border-radius: 50%; display: flex; align-items: center; justify-content: center;">🤖</div>
-                    <span style="font-weight: 600;">Kimi AI está escuchando...</span>
-                </div>
-                <input type="text" class="demo-input" placeholder="Escribe lo que quieras crear...">
-                <br><br>
-                <a href="#" class="btn-cta">Generar con IA</a>
-            </div>
         </div>
     </section>
 
@@ -943,40 +867,41 @@
             });
         });
 
-        // Typing effect
-        const texts = ['Construye tus ideas', 'Crea sin límites', 'Innovación ilimitada', 'Potencia tu creatividad'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        // Simple typing effect (corregido)
         const typingElement = document.querySelector('.typing-effect');
-        
-        function typeText() {
-            const currentText = texts[textIndex];
+        if (typingElement) {
+            const texts = ['Construye tus ideas', 'Crea sin límites', 'Innovación ilimitada', 'Potencia tu creatividad'];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
             
-            if (isDeleting) {
-                typingElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
+            function typeText() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typingElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let typeSpeed = isDeleting ? 50 : 100;
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    typeSpeed = 500;
+                }
+                
+                setTimeout(typeText, typeSpeed);
             }
             
-            let typeSpeed = isDeleting ? 50 : 100;
-            
-            if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                typeSpeed = 500;
-            }
-            
-            setTimeout(typeText, typeSpeed);
+            typeText();
         }
-        
-        // Start typing effect
-        typeText();
 
         // Intersection Observer for animations
         const observerOptions = {
